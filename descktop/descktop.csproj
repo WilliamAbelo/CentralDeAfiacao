@@ -11,6 +11,23 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,8 +48,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>301388AC2B34C8719B8BFC84C66D3E1A1E9FC764</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>descktop_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,14 +81,156 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Data\CategoriasModel.cs" />
+    <Compile Include="Data\ClientesModel.cs" />
+    <Compile Include="Data\CondicoesModel.cs" />
+    <Compile Include="Data\DBModel.cs" />
+    <Compile Include="Data\EmpresasModel.cs" />
+    <Compile Include="Data\FreteModel.cs" />
+    <Compile Include="Data\ProdutosModel.cs" />
+    <Compile Include="Data\FornecedoresExemplo.cs" />
+    <Compile Include="Data\DividasModel.cs" />
+    <Compile Include="Data\RecebimentosModel.cs" />
+    <Compile Include="Data\UsuarioExemplo.cs" />
+    <Compile Include="Data\PedidosModel.cs" />
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoriaService.cs" />
+    <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\CondicaoService.cs" />
+    <Compile Include="Services\DBService.cs" />
+    <Compile Include="Services\DividaService.cs" />
+    <Compile Include="Services\FCaixaService.cs" />
+    <Compile Include="Services\FreteService.cs" />
+    <Compile Include="Services\ItemPedidoService.cs" />
+    <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\ParcelasDividaServices.cs" />
+    <Compile Include="Services\PedidoService.cs" />
+    <Compile Include="Services\ProdutoService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
+    <Compile Include="Views\Clientes\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Clientes\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\frmDetalhes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Clientes\frmDetalhes.Designer.cs">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\frmNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Clientes\frmNovo.Designer.cs">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Configuracao\frmDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Configuracao\frmDB.Designer.cs">
+      <DependentUpon>frmDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Dividas\frmDetalhes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Dividas\frmDetalhes.Designer.cs">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\frmFluxoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\frmFluxoCaixa.Designer.cs">
+      <DependentUpon>frmFluxoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Dividas\frmNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Dividas\frmNovo.Designer.cs">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Fornecedores\frmDetalhes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Fornecedores\frmDetalhes.Designer.cs">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Produtos\frmDetalhes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Produtos\frmDetalhes.Designer.cs">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Produtos\frmNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Produtos\frmNovo.Designer.cs">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Produtos\frmProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Produtos\frmProduto.Designer.cs">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Fornecedores\frmFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Fornecedores\frmFornecedores.Designer.cs">
+      <DependentUpon>frmFornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Dividas\frmDivi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Dividas\frmDivi.Designer.cs">
+      <DependentUpon>frmDivi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Recebimentos\frmReceb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FluxoCaixa\Recebimentos\frmReceb.Designer.cs">
+      <DependentUpon>frmReceb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pedidos\frmDetalhes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pedidos\frmDetalhes.Designer.cs">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pedidos\frmNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pedidos\frmNovo.Designer.cs">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pedidos\frmPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Pedidos\frmPedidos.Designer.cs">
+      <DependentUpon>frmPedidos.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,7 +239,75 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Clientes\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Clientes\frmDetalhes.resx">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Clientes\frmNovo.resx">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Configuracao\frmDB.resx">
+      <DependentUpon>frmDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FluxoCaixa\Dividas\frmDetalhes.resx">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FluxoCaixa\frmFluxoCaixa.resx">
+      <DependentUpon>frmFluxoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FluxoCaixa\Dividas\frmNovo.resx">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Fornecedores\frmDetalhes.resx">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Produtos\frmDetalhes.resx">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Produtos\frmNovo.resx">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Produtos\frmProduto.resx">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Fornecedores\frmFornecedores.resx">
+      <DependentUpon>frmFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FluxoCaixa\Dividas\frmDivi.resx">
+      <DependentUpon>frmDivi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FluxoCaixa\Recebimentos\frmReceb.resx">
+      <DependentUpon>frmReceb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuarios\frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pedidos\frmDetalhes.resx">
+      <DependentUpon>frmDetalhes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pedidos\frmNovo.resx">
+      <DependentUpon>frmNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Pedidos\frmPedidos.resx">
+      <DependentUpon>frmPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="descktop_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\frmClientes.datasource" />
+    <None Include="Properties\DataSources\frmEstoque.datasource" />
+    <None Include="Properties\DataSources\frmFornecedores.datasource" />
+    <None Include="Properties\DataSources\frmInicio.datasource" />
+    <None Include="Properties\DataSources\frmLogin.datasource" />
+    <None Include="Properties\DataSources\frmPaga.datasource" />
+    <None Include="Properties\DataSources\frmReceb.datasource" />
+    <None Include="Properties\DataSources\frmUsuario.datasource" />
+    <None Include="Properties\DataSources\frmVendas.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +320,40 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\serra-circular.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+    <None Include="Resources\Cab.jpg" />
+    <None Include="Resources\Icon.ico" />
+    <None Include="Resources\SerrF.jpg" />
+    <None Include="Resources\SerrC.jpg" />
+    <None Include="Resources\Rol.jpg" />
+    <None Include="Resources\Reb.jpg" />
+    <None Include="Resources\Icon.png" />
+    <None Include="Resources\FresW.jpg" />
+    <None Include="Resources\FresA.jpg" />
+    <None Include="Resources\FacW.jpg" />
+    <None Include="Resources\FacA-2.jpg" />
+    <None Include="Resources\FacA.jpg" />
+    <None Include="Resources\Etc.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
