@@ -95,22 +95,33 @@ namespace descktop
             {
                 return;
             };
-            var first = lista.First();
-            var last = lista.Last();
-            
+            //var first = lista.First();
+            //var last = lista.Last();
+
+            if (nome == "")
+            {
+                ultimoId = lista.Min(venda => venda.idPedido);
+        }
+
             foreach (PedidosModel venda in lista)
             {
-                if (nome == "")
-                {
-                    if (venda.Equals(first) && !buscarPedAbertos)
-                    {
-                        primeiroId = venda.idPedido;
-                    }
-                    if (venda.Equals(last) && !buscarPedAbertos)
-                    {
-                        ultimoId = venda.idPedido;
-                    }
-                }
+                //if (nome == "")
+                //{
+                //    //if (venda.idPedido > maxNumber)
+                //    //{
+                //    //    ultimoId = venda.idPedido;
+                //    //}
+
+
+                //    //if (venda.Equals(first) && !buscarPedAbertos)
+                //    //{
+                //    //    primeiroId = venda.idPedido;
+                //    //}
+                //    //if (venda.Equals(last) && !buscarPedAbertos)
+                //    //{
+                //    //    ultimoId = venda.idPedido;
+                //    //}
+                //}
                 venda.cliente = clienteService.seCliente(venda.idEmpresa, venda.cliente.idCliente);
                 venda.frete = freteService.seFretePedido(venda.idEmpresa, venda.idPedido);
                 venda.condicao = condicaoService.seCondicaoPedido(venda.idEmpresa, venda.idPedido);
@@ -178,7 +189,7 @@ namespace descktop
             }
             lstVendas.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             //frmInicio.LabelLoad = false;
-            if ((!buscarPedAbertos) && (lstVendas.Items.Count < 5) && (txtBuscaNom.Text == ""))
+            if ((!buscarPedAbertos) && (lstVendas.Items.Count < 10) && (txtBuscaNom.Text == ""))
             {
                 btnPagMais.Enabled = false;
                 //pagina = 0;
@@ -308,17 +319,19 @@ namespace descktop
 
         private void btnPagMenos_Click(object sender, EventArgs e)
         {
-            if (pagina > 0)
-            {
-                pagina--;
-            }
-            if (pagina == 1)
-            {
-                btnPagMenos.Enabled = false;
-                btnPagMais.Enabled = true;
-            }
+            //if (pagina > 0)
+            //{
+            //    --;
+            //}
+            //if (pagina == 1)
+            //{
+            btnPagMenos.Enabled = false;
+            btnPagMais.Enabled = true;
+            //}
             lstVendas.Items.Clear();
-            paginacao = " and ped_Pedido_int_PK < " + primeiroId + " ";
+            //paginacao = " and ped_Pedido_int_PK < " + primeiroId + " ";
+            paginacao = " and ped_Pedido_int_PK > 0 ";
+            pagina = 1;
             if (idPedidos.Count > 0)
             {
                 BuscarPedidos(buscarPedAbertos);
@@ -329,7 +342,7 @@ namespace descktop
         private void btnPagMais_Click(object sender, EventArgs e)
         {
             lstVendas.Items.Clear();
-            paginacao = " and ped_Pedido_int_PK > " + ultimoId + " ";
+            paginacao = " and ped_Pedido_int_PK < " + ultimoId + " ";
             pagina++;
             if (pagina > 1)
             {

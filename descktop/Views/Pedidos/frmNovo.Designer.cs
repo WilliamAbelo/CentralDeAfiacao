@@ -124,6 +124,8 @@
             this.txtCliEsco = new System.Windows.Forms.TextBox();
             this.btnAddCli = new System.Windows.Forms.Button();
             this.tbProd = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTotProd = new System.Windows.Forms.TextBox();
             this.ctrListaProd = new System.Windows.Forms.TabControl();
             this.tbSC = new System.Windows.Forms.TabPage();
             this.listProd = new System.Windows.Forms.ListView();
@@ -144,8 +146,9 @@
             this.txtNovoProdutoEsco = new System.Windows.Forms.TextBox();
             this.btnNovVoltar = new System.Windows.Forms.Button();
             this.btnFecharPed = new System.Windows.Forms.Button();
-            this.txtTotProd = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnLimparCondicao = new System.Windows.Forms.Button();
+            this.btnLimparItens = new System.Windows.Forms.Button();
+            this.btnLimparFrete = new System.Windows.Forms.Button();
             this.pnlNovo.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -229,6 +232,7 @@
             // tabPage1
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage1.Controls.Add(this.btnLimparItens);
             this.tabPage1.Controls.Add(this.lblValDesI);
             this.tabPage1.Controls.Add(this.label29);
             this.tabPage1.Controls.Add(this.label26);
@@ -366,6 +370,7 @@
             // tabPage4
             // 
             this.tabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage4.Controls.Add(this.btnLimparFrete);
             this.tabPage4.Controls.Add(this.lblFrecliente);
             this.tabPage4.Controls.Add(this.label56);
             this.tabPage4.Controls.Add(this.panel3);
@@ -657,6 +662,7 @@
             // tabPage2
             // 
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage2.Controls.Add(this.btnLimparCondicao);
             this.tabPage2.Controls.Add(this.txtValorEnt);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.lblValDesC);
@@ -1244,6 +1250,26 @@
             this.tbProd.Text = "Produtos";
             this.tbProd.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(402, 133);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 59;
+            this.label4.Text = "Total";
+            // 
+            // txtTotProd
+            // 
+            this.txtTotProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTotProd.Location = new System.Drawing.Point(435, 129);
+            this.txtTotProd.Name = "txtTotProd";
+            this.txtTotProd.ReadOnly = true;
+            this.txtTotProd.Size = new System.Drawing.Size(64, 20);
+            this.txtTotProd.TabIndex = 58;
+            this.txtTotProd.Text = "0.00";
+            // 
             // ctrListaProd
             // 
             this.ctrListaProd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1458,25 +1484,35 @@
             this.btnFecharPed.UseVisualStyleBackColor = true;
             this.btnFecharPed.Click += new System.EventHandler(this.btnFecharPed_Click);
             // 
-            // txtTotProd
+            // btnLimparCondicao
             // 
-            this.txtTotProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTotProd.Location = new System.Drawing.Point(435, 129);
-            this.txtTotProd.Name = "txtTotProd";
-            this.txtTotProd.ReadOnly = true;
-            this.txtTotProd.Size = new System.Drawing.Size(64, 20);
-            this.txtTotProd.TabIndex = 58;
-            this.txtTotProd.Text = "0.00";
+            this.btnLimparCondicao.Location = new System.Drawing.Point(617, 0);
+            this.btnLimparCondicao.Name = "btnLimparCondicao";
+            this.btnLimparCondicao.Size = new System.Drawing.Size(99, 23);
+            this.btnLimparCondicao.TabIndex = 41;
+            this.btnLimparCondicao.Text = "Limpar Condição";
+            this.btnLimparCondicao.UseVisualStyleBackColor = true;
+            this.btnLimparCondicao.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
-            // label4
+            // btnLimparItens
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(402, 133);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
-            this.label4.TabIndex = 59;
-            this.label4.Text = "Total";
+            this.btnLimparItens.Location = new System.Drawing.Point(641, 0);
+            this.btnLimparItens.Name = "btnLimparItens";
+            this.btnLimparItens.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparItens.TabIndex = 21;
+            this.btnLimparItens.Text = "Limpar Itens";
+            this.btnLimparItens.UseVisualStyleBackColor = true;
+            this.btnLimparItens.Click += new System.EventHandler(this.btnLimparItens_Click);
+            // 
+            // btnLimparFrete
+            // 
+            this.btnLimparFrete.Location = new System.Drawing.Point(641, 0);
+            this.btnLimparFrete.Name = "btnLimparFrete";
+            this.btnLimparFrete.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparFrete.TabIndex = 63;
+            this.btnLimparFrete.Text = "Limpar Frete";
+            this.btnLimparFrete.UseVisualStyleBackColor = true;
+            this.btnLimparFrete.Click += new System.EventHandler(this.btnLimparFrete_Click);
             // 
             // frmNovo
             // 
@@ -1642,5 +1678,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTotProd;
+        private System.Windows.Forms.Button btnLimparCondicao;
+        private System.Windows.Forms.Button btnLimparItens;
+        private System.Windows.Forms.Button btnLimparFrete;
     }
 }

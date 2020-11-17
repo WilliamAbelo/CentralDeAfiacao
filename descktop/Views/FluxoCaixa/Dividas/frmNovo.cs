@@ -146,5 +146,11 @@ namespace descktop.Views.FluxoCaixa.Pagamentos
         {
             txtValorTotal.Text = "";
         }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            parcelas.Clear();
+            lstParcelas.Items.Clear();
+        }
     }
 }

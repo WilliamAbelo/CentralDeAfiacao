@@ -47,6 +47,7 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.cbTipoDivida = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.qtdParc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +108,7 @@
             this.lstParcelas.HideSelection = false;
             this.lstParcelas.Location = new System.Drawing.Point(13, 142);
             this.lstParcelas.Name = "lstParcelas";
-            this.lstParcelas.Size = new System.Drawing.Size(711, 135);
+            this.lstParcelas.Size = new System.Drawing.Size(711, 111);
             this.lstParcelas.TabIndex = 86;
             this.lstParcelas.UseCompatibleStateImageBehavior = false;
             // 
@@ -235,12 +236,24 @@
             this.label7.TabIndex = 95;
             this.label7.Text = "Tipo da Divida";
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpar.Location = new System.Drawing.Point(631, 259);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(93, 23);
+            this.btnLimpar.TabIndex = 96;
+            this.btnLimpar.Text = "Limpar Parcelas";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // frmNovo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(736, 417);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbTipoDivida);
             this.Controls.Add(this.btnVoltar);
@@ -289,5 +302,6 @@
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.ComboBox cbTipoDivida;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

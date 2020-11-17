@@ -71,14 +71,14 @@
             this.pnPag.Controls.Add(this.btnPagMenos);
             this.pnPag.Location = new System.Drawing.Point(6, 1);
             this.pnPag.Name = "pnPag";
-            this.pnPag.Size = new System.Drawing.Size(95, 27);
+            this.pnPag.Size = new System.Drawing.Size(149, 27);
             this.pnPag.TabIndex = 0;
             this.pnPag.Visible = false;
             // 
             // lblPage
             // 
             this.lblPage.AutoSize = true;
-            this.lblPage.Location = new System.Drawing.Point(28, 7);
+            this.lblPage.Location = new System.Drawing.Point(66, 7);
             this.lblPage.Name = "lblPage";
             this.lblPage.Size = new System.Drawing.Size(37, 13);
             this.lblPage.TabIndex = 20;
@@ -86,7 +86,7 @@
             // 
             // btnPagMais
             // 
-            this.btnPagMais.Location = new System.Drawing.Point(68, 3);
+            this.btnPagMais.Location = new System.Drawing.Point(124, 2);
             this.btnPagMais.Name = "btnPagMais";
             this.btnPagMais.Size = new System.Drawing.Size(22, 22);
             this.btnPagMais.TabIndex = 19;
@@ -99,9 +99,9 @@
             this.btnPagMenos.Enabled = false;
             this.btnPagMenos.Location = new System.Drawing.Point(3, 3);
             this.btnPagMenos.Name = "btnPagMenos";
-            this.btnPagMenos.Size = new System.Drawing.Size(22, 22);
+            this.btnPagMenos.Size = new System.Drawing.Size(51, 22);
             this.btnPagMenos.TabIndex = 13;
-            this.btnPagMenos.Text = "<";
+            this.btnPagMenos.Text = "Inicio";
             this.btnPagMenos.UseVisualStyleBackColor = true;
             this.btnPagMenos.Click += new System.EventHandler(this.btnPagMenos_Click);
             // 

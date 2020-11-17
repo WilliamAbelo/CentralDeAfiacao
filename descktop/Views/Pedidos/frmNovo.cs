@@ -343,7 +343,7 @@ namespace descktop.Views.Vendas
 
             lstCond.Items.Clear();
             condicoes.parcelas.Clear();
-            decimal entrada = txtValorEnt.Text == "" ? 0: decimal.Parse(txtValorEnt.Text);
+            decimal entrada = txtValorEnt.Text == "" ? 0 : decimal.Parse(txtValorEnt.Text);
             int qtdPar = int.Parse(qtdParcelas.Value.ToString());
             DateTime dtEntrada = dtpEntrada.Value;
             string formaPgEnt = "";
@@ -871,6 +871,34 @@ namespace descktop.Views.Vendas
         private void numNovoQuantidade_ValueChanged(object sender, EventArgs e)
         {
             txtTotProd.Text = (numNovoQuantidade.Value * decimal.Parse(txtValorUnitario.Text)).ToString();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            lstCond.Items.Clear();
+            condicoes.parcelas.Clear();
+            //Totallbl(valorTotal, valorParcialItens, valorFrete, valorDesconto);
+        }
+
+        private void btnLimparFrete_Click(object sender, EventArgs e)
+        {
+            txtValFret.Text = "0.00";
+            lblValFre.Text = "0.00";
+            dtEnv.Value = DateTime.Now;
+            lblDtFre.Text = "01/01/2020";
+            frete = new FreteModel();
+            valorFrete = 0;
+            Totallbl(valorTotal, valorParcialItens, valorFrete, valorDesconto);
+        }
+
+        private void btnLimparItens_Click(object sender, EventArgs e)
+        {
+            lstItensPedidos.Items.Clear();
+            produtos.produtos.Clear();
+            valorTotal = 0;
+            valorParcialItens = 0;
+            valorDesconto = 0;
+            Totallbl(valorTotal, valorParcialItens, valorFrete, valorDesconto);
         }
     }
 }

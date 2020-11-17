@@ -28,8 +28,8 @@ namespace descktop.Services
                 idPedidos = "in (";
             }else
             {
-                idPedidos = "not in (";
                 top = " top 10 ";
+                idPedidos = "not in (";                
             }
             foreach (var item in idPed)
             {
@@ -47,7 +47,8 @@ namespace descktop.Services
                 "from TB_CA_Pedidos_ped " +
                 "where ped_Empresa_int_FK = " + idEmp.ToString() +
                 " and ped_Pedido_int_PK " + idPedidos + ") "+
-                paginacao;
+                paginacao +
+                " order by ped_DataVenda_dtm desc";
 
             OleDbCommand commando = new OleDbCommand(comandoSql, DBService.conexao);
             ClienteService clienteService = new ClienteService();

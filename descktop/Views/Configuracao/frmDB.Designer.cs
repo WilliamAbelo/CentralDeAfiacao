@@ -61,6 +61,7 @@
             // 
             // btnProp
             // 
+            this.btnProp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProp.Location = new System.Drawing.Point(537, 388);
             this.btnProp.Name = "btnProp";
             this.btnProp.Size = new System.Drawing.Size(96, 23);
@@ -71,6 +72,7 @@
             // 
             // btnBck
             // 
+            this.btnBck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBck.Location = new System.Drawing.Point(3, 388);
             this.btnBck.Name = "btnBck";
             this.btnBck.Size = new System.Drawing.Size(75, 23);

@@ -168,6 +168,7 @@
             // 
             // qtdParc
             // 
+            this.qtdParc.Enabled = false;
             this.qtdParc.Location = new System.Drawing.Point(531, 56);
             this.qtdParc.Name = "qtdParc";
             this.qtdParc.ReadOnly = true;
@@ -195,7 +196,7 @@
             this.btnEdtParcela.Name = "btnEdtParcela";
             this.btnEdtParcela.Size = new System.Drawing.Size(87, 23);
             this.btnEdtParcela.TabIndex = 112;
-            this.btnEdtParcela.Text = "Editar Parcela";
+            this.btnEdtParcela.Text = "Salvar Parcela";
             this.btnEdtParcela.UseVisualStyleBackColor = true;
             this.btnEdtParcela.Click += new System.EventHandler(this.btnEdtParcela_Click);
             // 
