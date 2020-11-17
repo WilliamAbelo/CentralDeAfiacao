@@ -1,0 +1,8 @@
+.vs/
+DB/
+Setup/
+descktop/bin/
+descktop/obj/
+descktop/Properties/
+descktop/publish/
+descktop/descktop_TemporaryKey.pfx
