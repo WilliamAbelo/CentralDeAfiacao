@@ -479,7 +479,7 @@ namespace descktop.Views.Vendas
             }
 
             PedidoService pedidoService = new PedidoService();
-            bool success = pedidoService.inPedido(1, pedido);
+            bool success = pedidoService.inPedido(idEmpresa, pedido);
             if (success)
             {
                 MessageBox.Show("Pedido Gravado com Sucesso");

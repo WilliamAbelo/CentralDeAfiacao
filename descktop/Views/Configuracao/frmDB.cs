@@ -96,7 +96,7 @@ namespace descktop.Views.Configuracao
 
         private void btnProp_Click(object sender, EventArgs e)
         {
-            DBService.propriedadesDB();
+            DBService.listTables();
         }
     }
 }

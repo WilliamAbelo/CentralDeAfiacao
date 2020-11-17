@@ -58,7 +58,13 @@ namespace descktop.Services
 
         public string[] listTables()
         {
+            string tabelas = ConfigurationManager.AppSettings["Tables"];
+            //tabelas.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace(" ", string.Empty);
 
+
+            string[] listaTabelas;
+            listaTabelas = tabelas.Split(';');
+            
             string comandoSql = "select MSysObjects.name " +
                                     "from MSysObjects " +
                                     "where " +

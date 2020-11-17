@@ -61,11 +61,11 @@
             // 
             // btnProp
             // 
-            this.btnProp.Location = new System.Drawing.Point(558, 388);
+            this.btnProp.Location = new System.Drawing.Point(537, 388);
             this.btnProp.Name = "btnProp";
-            this.btnProp.Size = new System.Drawing.Size(75, 23);
+            this.btnProp.Size = new System.Drawing.Size(96, 23);
             this.btnProp.TabIndex = 46;
-            this.btnProp.Text = "Propriedades";
+            this.btnProp.Text = "Listar Tabelas";
             this.btnProp.UseVisualStyleBackColor = true;
             this.btnProp.Click += new System.EventHandler(this.btnProp_Click);
             // 
