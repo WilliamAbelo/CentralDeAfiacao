@@ -229,7 +229,7 @@ namespace descktop.Views.Produtos
 
         private void txtValor_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtValor.Text, "[^0-9.]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtValor.Text, "[^0-9,.]"))
             {
                 txtValor.Text = txtValor.Text.Remove((txtValor.Text.Length - 1), 1);
                 txtValor.SelectionStart = txtValor.Text.Length;

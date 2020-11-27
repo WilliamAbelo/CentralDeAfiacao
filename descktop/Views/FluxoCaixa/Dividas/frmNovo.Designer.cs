@@ -196,6 +196,7 @@
             this.txtValorTotal.Size = new System.Drawing.Size(100, 20);
             this.txtValorTotal.TabIndex = 66;
             this.txtValorTotal.Text = "0.00";
+            this.txtValorTotal.TextChanged += new System.EventHandler(this.txtValorTotal_TextChanged);
             this.txtValorTotal.GotFocus += new System.EventHandler(this.txtValorTotal_GotFocus);
             // 
             // txtParcela

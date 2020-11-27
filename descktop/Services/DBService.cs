@@ -65,39 +65,39 @@ namespace descktop.Services
             string[] listaTabelas;
             listaTabelas = tabelas.Split(';');
             
-            string comandoSql = "select MSysObjects.name " +
-                                    "from MSysObjects " +
-                                    "where " +
-                                    "MSysObjects.type In(1,4,6) " +
-                                    "and MSysObjects.name not like '~*' " +
-                                    "and MSysObjects.name not like 'MSys*' " +
-                                    "order by MSysObjects.name ";
+            //string comandoSql = "select MSysObjects.name " +
+            //                        "from MSysObjects " +
+            //                        "where " +
+            //                        "MSysObjects.type In(1,4,6) " +
+            //                        "and MSysObjects.name not like '~*' " +
+            //                        "and MSysObjects.name not like 'MSys*' " +
+            //                        "order by MSysObjects.name ";
 
-            OleDbCommand commando = new OleDbCommand(comandoSql, conexao);
+            //OleDbCommand commando = new OleDbCommand(comandoSql, conexao);
 
-            try
-            {
-                //Abertura da conexão
-                conexao.Open();
-                OleDbDataReader dados = commando.ExecuteReader();
-                int index = 0;
-                while (dados.Read())
-                {
-                    var teste = dados[index];
-                    index++;
-                }
-            }
-            catch (Exception exc)
-            {
+            //try
+            //{
+            //    //Abertura da conexão
+            //    conexao.Open();
+            //    OleDbDataReader dados = commando.ExecuteReader();
+            //    int index = 0;
+            //    while (dados.Read())
+            //    {
+            //        var teste = dados[index];
+            //        index++;
+            //    }
+            //}
+            //catch (Exception exc)
+            //{
 
-                throw new Exception(exc.Message);
-            }
-            finally
-            {
-                conexao.Close();
-            }
+            //    throw new Exception(exc.Message);
+            //}
+            //finally
+            //{
+            //    conexao.Close();
+            //}
 
-            return null;
+            return listaTabelas;
         }
 
         public void createTable()

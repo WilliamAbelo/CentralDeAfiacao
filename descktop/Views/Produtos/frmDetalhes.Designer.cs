@@ -201,6 +201,7 @@
             this.txtValor.Size = new System.Drawing.Size(72, 20);
             this.txtValor.TabIndex = 23;
             this.txtValor.Text = "0.00";
+            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
             // btnNovVoltar
             // 

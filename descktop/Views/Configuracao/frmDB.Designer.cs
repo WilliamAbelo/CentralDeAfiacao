@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnProp = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cbTabelas = new System.Windows.Forms.ComboBox();
             this.btnBck = new System.Windows.Forms.Button();
             this.lstDB = new System.Windows.Forms.ListView();
             this.btnExecutarQuery = new System.Windows.Forms.Button();
@@ -47,7 +49,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnProp);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.cbTabelas);
             this.panel1.Controls.Add(this.btnBck);
             this.panel1.Controls.Add(this.lstDB);
             this.panel1.Controls.Add(this.btnExecutarQuery);
@@ -59,25 +63,41 @@
             this.panel1.Size = new System.Drawing.Size(735, 416);
             this.panel1.TabIndex = 0;
             // 
-            // btnProp
+            // label1
             // 
-            this.btnProp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProp.Location = new System.Drawing.Point(537, 388);
-            this.btnProp.Name = "btnProp";
-            this.btnProp.Size = new System.Drawing.Size(96, 23);
-            this.btnProp.TabIndex = 46;
-            this.btnProp.Text = "Listar Tabelas";
-            this.btnProp.UseVisualStyleBackColor = true;
-            this.btnProp.Click += new System.EventHandler(this.btnProp_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(351, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Tabelas: ";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(681, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(49, 23);
+            this.button1.TabIndex = 48;
+            this.button1.Text = "Copiar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cbTabelas
+            // 
+            this.cbTabelas.FormattingEnabled = true;
+            this.cbTabelas.Location = new System.Drawing.Point(408, 6);
+            this.cbTabelas.Name = "cbTabelas";
+            this.cbTabelas.Size = new System.Drawing.Size(267, 21);
+            this.cbTabelas.TabIndex = 47;
             // 
             // btnBck
             // 
             this.btnBck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBck.Location = new System.Drawing.Point(3, 388);
             this.btnBck.Name = "btnBck";
-            this.btnBck.Size = new System.Drawing.Size(75, 23);
+            this.btnBck.Size = new System.Drawing.Size(103, 23);
             this.btnBck.TabIndex = 44;
-            this.btnBck.Text = "BackUp";
+            this.btnBck.Text = "Salvar Consulta";
             this.btnBck.UseVisualStyleBackColor = true;
             this.btnBck.Click += new System.EventHandler(this.btnBck_Click);
             // 
@@ -87,9 +107,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstDB.HideSelection = false;
-            this.lstDB.Location = new System.Drawing.Point(4, 26);
+            this.lstDB.Location = new System.Drawing.Point(4, 33);
             this.lstDB.Name = "lstDB";
-            this.lstDB.Size = new System.Drawing.Size(726, 192);
+            this.lstDB.Size = new System.Drawing.Size(726, 185);
             this.lstDB.TabIndex = 43;
             this.lstDB.UseCompatibleStateImageBehavior = false;
             // 
@@ -117,7 +137,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(60, 9);
+            this.label4.Location = new System.Drawing.Point(52, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 32;
@@ -181,6 +201,8 @@
         private System.Windows.Forms.TextBox txtQuery;
         private System.Windows.Forms.ListView lstDB;
         private System.Windows.Forms.Button btnBck;
-        private System.Windows.Forms.Button btnProp;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbTabelas;
     }
 }

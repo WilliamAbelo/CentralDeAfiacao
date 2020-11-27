@@ -152,5 +152,14 @@ namespace descktop.Views.FluxoCaixa.Pagamentos
             parcelas.Clear();
             lstParcelas.Items.Clear();
         }
+
+        private void txtValorTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtValorTotal.Text, "[^0-9,.]"))
+            {
+                txtValorTotal.Text = txtValorTotal.Text.Remove((txtValorTotal.Text.Length - 1), 1);
+                txtValorTotal.SelectionStart = txtValorTotal.Text.Length;
+            }
+        }
     }
 }

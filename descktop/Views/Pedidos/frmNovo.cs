@@ -384,11 +384,11 @@ namespace descktop.Views.Vendas
             decimal valorFim = (valorTotal + valorFrete) - entrada;
 
             string dtPagEnt = ""; ;
-            if (dtEntrada.DayOfYear <= DateTime.Now.DayOfYear)
+            if (dtEntrada <= DateTime.Now)
             {
                 dtPagEnt = DateTime.Now.ToString("dd/MM/yyyy");
             }
-            else if (dtEntrada.DayOfYear > DateTime.Now.DayOfYear)
+            else if (dtEntrada > DateTime.Now)
             {
                 dtPagEnt = "";
             }
@@ -430,7 +430,7 @@ namespace descktop.Views.Vendas
                             vParcela.ToString("C"),
                             formaPgPar,
                             dataParcela.ToString("dd/MM/yyyy"),
-                            dataParcela.DayOfYear > DateTime.Now.DayOfYear? "Não": "Sim",
+                            dataParcela > DateTime.Now? "Não": "Sim",
                             ""
                         };
                     ListViewItem item = new ListViewItem(row);
@@ -550,7 +550,7 @@ namespace descktop.Views.Vendas
 
             frete.valorFrete = valorFrete;
             frete.dataEnvio = dtEnv.Value;
-            if ((frete.dataEnvio.DayOfYear <= DateTime.Now.DayOfYear))
+            if ((frete.dataEnvio <= DateTime.Now))
             {
                 frete.enviado = 1;
             }
@@ -790,7 +790,7 @@ namespace descktop.Views.Vendas
 
         private void txtDesc_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtDesc.Text, "[^0-9.]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtDesc.Text, "[^0-9,.]"))
             {
                 txtDesc.Text = txtDesc.Text.Remove((txtDesc.Text.Length - 1), 1);
                 txtDesc.SelectionStart = txtDesc.Text.Length;
@@ -799,7 +799,7 @@ namespace descktop.Views.Vendas
 
         private void txtValFret_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtValFret.Text, "[^0-9.]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtValFret.Text, "[^0-9,.]"))
             {
                 txtValFret.Text = txtValFret.Text.Remove((txtValFret.Text.Length - 1), 1);
                 txtValFret.SelectionStart = txtValFret.Text.Length;
@@ -808,7 +808,7 @@ namespace descktop.Views.Vendas
 
         private void txtValorEnt_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtValorEnt.Text, "[^0-9.]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtValorEnt.Text, "[^0-9,.]"))
             {
                 txtValorEnt.Text = txtValorEnt.Text.Remove((txtValorEnt.Text.Length - 1), 1);
                 txtValorEnt.SelectionStart = txtValorEnt.Text.Length;
