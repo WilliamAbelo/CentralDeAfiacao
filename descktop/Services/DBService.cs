@@ -39,8 +39,8 @@ namespace descktop.Services
 
             // The directory the save file dialog opens by default
             // --- Optional ---
-            string initialFilePath = localPath + "\\" + path[1] + "\\bck\\" + path[2];          
-            
+            string initialFilePath = localPath + "\\" + path[1] + "\\bck\\" + path[2];
+
 
             try
             {
@@ -59,12 +59,14 @@ namespace descktop.Services
         public string[] listTables()
         {
             string tabelas = ConfigurationManager.AppSettings["Tables"];
+            tabelas = tabelas.Replace(" ", string.Empty);
+            tabelas = tabelas.Replace("\r\n", string.Empty);
             //tabelas.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace(" ", string.Empty);
 
 
             string[] listaTabelas;
             listaTabelas = tabelas.Split(';');
-            
+
             //string comandoSql = "select MSysObjects.name " +
             //                        "from MSysObjects " +
             //                        "where " +
@@ -134,65 +136,16 @@ namespace descktop.Services
             }
         }
 
-        public void resetDB()
+        public void truncateTable(string nomeTabela, string colunaPK)
         {
-            List<string> tabelas = new List<string>
-            {
-                "TB_CA_Categorias_ctg",
-                "TB_CA_Clientes_cli",
-                "TB_CA_Condicao_con",
-                "TB_CA_Frete_frt",
-                "TB_CA_ItensPedido_itp",
-                "TB_CA_Pedidos_ped",
-                "TB_CA_Produtos_prd"
-            };
-
-            foreach (var tabela in tabelas)
-            {
-                string[] nomeTabela = tabela.Split('_');
-                string prefixo = nomeTabela[3];
-                string PK = nomeTabela[2];
-                string teste = PK.Substring((PK.Length - 1), 1);
-                if (PK.Substring((PK.Length - 1), 1) is "s")
-                {
-                    PK = PK.Substring(0, (PK.Length - 1));
-                }
-                if (PK is "ItensPedido")
-                {
-                    PK = "ItemPedido";
-                }
-
-
-                string comandoSql1 = "DELETE FROM " + tabela;
-                string comandoSql2 = "ALTER TABLE " + tabela + " ALTER COLUMN " + prefixo + "_" + PK + "_int_PK COUNTER (1, 1);";
-
-
-                try
-                {
-                    //Abertura da conexão
-                    conexao.Open();
-
-                    OleDbCommand commando1 = new OleDbCommand(comandoSql1, conexao);
-                    commando1.ExecuteReader();
-
-                    OleDbCommand commando2 = new OleDbCommand(comandoSql2, conexao);
-                    commando2.ExecuteReader();
-
-                }
-                catch (Exception exc)
-                {
-
-                    throw new Exception(exc.Message);
-                }
-                finally
-                {
-                    conexao.Close();
-                }
-            }
+            string querry = "delete from " + nomeTabela + " ";
+            executarQuery(querry, "Deletando " + nomeTabela, false);
+            querry = "ALTER TABLE " + nomeTabela + " ALTER COLUMN  " + colunaPK + "  COUNTER (1, 1)";
+            executarQuery(querry, "Criando " + nomeTabela, false);
         }
 
-        
-        public DBModel executarQuery(string query)
+
+        public DBModel executarQuery(string query, string message = null, bool exibirMsg = true)
         {
 
             OleDbCommand commando = new OleDbCommand(query, conexao);
@@ -201,7 +154,7 @@ namespace descktop.Services
             colunas.nome = new List<string>();
             Linhas linhas = new Linhas();
             linhas.linhas = new List<Linha>();
-            
+
             try
             {
                 //Abertura da conexão
@@ -241,7 +194,10 @@ namespace descktop.Services
                 retorno.linhas = linhas;
                 if (!temRetorno)
                 {
-                    MessageBox.Show("Comando Executado Com Sucesso");
+                    if (exibirMsg)
+                    {
+                        MessageBox.Show(message != null ? message : "Comando Executado Com Sucesso");
+                    }
                     return null;
                     //retorno = "Comando Executado Com Sucesso";
                 }

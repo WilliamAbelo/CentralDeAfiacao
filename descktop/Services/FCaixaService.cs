@@ -1,4 +1,5 @@
 ﻿using descktop.Data;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -30,7 +31,7 @@ namespace descktop.Services
                              "where con_Empresa_int_FK = " + idEmp.ToString() + " and " +
                              "con_DataParcela_dtm > #" + inicio.Date.ToString("MM/dd/yyyy") + "# and " +
                              "con_DataParcela_dtm <= #" + final.Date.ToString("MM/dd/yyyy") + "# order by con_DataParcela_dtm";
-                             ;
+                             
 
             OleDbCommand commando = new OleDbCommand(comandoSql, DBService.conexao);
 
@@ -194,6 +195,20 @@ namespace descktop.Services
             {
             }
             return true;
+        }
+
+        public void restoreBackUp(string nomeTabela, JToken tabela)
+        {
+            foreach (var linha in tabela)
+            {
+                for (int i = 0; i < linha.Count(); i++)
+                {
+                    var itens = linha[i];
+                    var valor = itens.Value<string>("cli_Nome_chr") ?? "";
+
+                }
+
+            }
         }
     }
 }

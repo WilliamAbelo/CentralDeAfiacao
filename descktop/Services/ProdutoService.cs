@@ -1,4 +1,6 @@
 ﻿using descktop.Data;
+using descktop.Utils;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -36,7 +38,8 @@ namespace descktop.Services
                 "prd_DataSync_dtm " +
                 "from TB_CA_Produtos_prd " +
                 "where prd_Empresa_int_FK = " + idEmp.ToString() + " and " +
-                "prd_Ativo_int = 1 and prd_Categoria_int_FK in (" + idCats + ")";
+                "prd_Ativo_int = 1 and prd_Categoria_int_FK in (" + idCats + ")" +
+                "order by prd_Produto_chr";
 
             OleDbCommand commando = new OleDbCommand(comandoSql, DBService.conexao);
 
@@ -156,8 +159,9 @@ namespace descktop.Services
             }
         }
 
-        public Boolean inProduto(int idEmp, ProdutosModel produto)
+        public bool inProduto(int idEmp, ProdutosModel produto)
         {
+
             string comandoSql = "insert into TB_CA_Produtos_prd (" +               
                 "prd_Empresa_int_FK," +
                 "prd_Produto_chr," +
@@ -206,7 +210,7 @@ namespace descktop.Services
             }
         }
 
-        public Boolean upProduto(int idEmp, int idProd, ProdutosModel produto)
+        public bool upProduto(int idEmp, int idProd, ProdutosModel produto)
         {
             string comandoSql = "update TB_CA_Produtos_prd set " +
                 "prd_Produto_chr = '" + produto.produto + "', " +
@@ -281,6 +285,39 @@ namespace descktop.Services
             finally
             {
                 DBService.conexao.Close();
+            }
+        }
+        public void restoreBackUp(string nomeTabela, JToken tabela)
+        {
+            DBService dBService = new DBService();
+            dBService.truncateTable(nomeTabela, "prd_Produto_int_PK");
+            ParseUtils encodeString = new ParseUtils();
+            foreach (var linha in tabela)
+            {
+                ProdutosModel produtosModel = new ProdutosModel();
+                for (int i = 0; i < linha.Count(); i++)
+                {
+                    var itens = linha[i];
+                    if (itens.Value<int>("prd_Produto_int_PK") != 0) { produtosModel.idProduto = itens.Value<int>("prd_Produto_int_PK"); }
+                    if (itens.Value<int>("prd_Empresa_int_FK") != 0) { produtosModel.idEmpresa = itens.Value<int>("prd_Empresa_int_FK"); }
+                    if (itens.Value<string>("prd_Produto_chr") != null) { produtosModel.produto = encodeString.encodeString(itens.Value<string>("prd_Produto_chr")); }
+                    if (itens.Value<int>("prd_Categoria_int_FK") != 0) { produtosModel.idCategoria = itens.Value<int>("prd_Categoria_int_FK"); }
+                    if (itens.Value<decimal>("prd_ValorUnitario_mon") != 0) { produtosModel.valor = itens.Value<decimal>("prd_ValorUnitario_mon"); }
+                    if (itens.Value<int>("prd_Ativo_int") != 0) { produtosModel.ativo = itens.Value<int>("prd_Ativo_int"); }
+                    if (itens.Value<string>("prd_Observacao_chr") != null) { produtosModel.observacao = encodeString.encodeString(itens.Value<string>("prd_Observacao_chr")); }
+                    if (itens.Value<string>("prd_DataCriacao_dtm") != null)
+                    {
+                        string iDate = itens.Value<string>("prd_DataCriacao_dtm");
+                        produtosModel.dataCriacao = Convert.ToDateTime(iDate);
+                    }
+                    if (itens.Value<string>("prd_DataSync_dtm") != null)
+                    {
+                        string iDate = itens.Value<string>("prd_DataSync_dtm");
+                        produtosModel.dataSync = Convert.ToDateTime(iDate);
+                    }
+
+                }
+                inProduto(produtosModel.idEmpresa, produtosModel);
             }
         }
     }

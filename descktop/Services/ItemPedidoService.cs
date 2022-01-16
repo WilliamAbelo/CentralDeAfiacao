@@ -1,4 +1,6 @@
 ﻿using descktop.Data;
+using descktop.Utils;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -88,15 +90,20 @@ namespace descktop.Services
 
         public bool inItensPedido(int idEmp, int idPed, ProdutosCarrinho produtos)
         {
-            //TB_CA_ItensPedido_itp
-            //itp_ItemPedido_int_PK itp_Empresa_int_FK itp_Pedido_int_FK   itp_Produto_int_FK itp_Quantidade_int  itp_ValorTotal_mon itp_ValorDesconto_mon
-
+            string insertId = "";
+            string id = "";
             //Abertura da conexão
             DBService.conexao.Open();
-
             foreach (ProdutosCesta item in produtos.produtos)
             {
+                if (item.idItemPedido != 0)
+                {
+                    insertId = "itp_ItemPedido_int_PK,";
+                    id = item.idItemPedido + ",";
+                }
+
                 string comandoSql = "insert into TB_CA_ItensPedido_itp (" +
+                        insertId +
                         "itp_Empresa_int_FK, " +
                         "itp_Pedido_int_FK, " +
                         "itp_Produto_int_FK, " +
@@ -104,13 +111,15 @@ namespace descktop.Services
                         "itp_ValorUnitario_mon, " +
                         "itp_ValorTotal_mon, " +
                         "itp_ValorDesconto_mon ) " +
-                        "VALUES (" + idEmp.ToString() + ",'" +
-                                    idPed.ToString() + "','" +
-                                    item.produto.idProduto.ToString() + "','" +
-                                    item.quantidade.ToString() + "','" +
-                                    item.produto.valor.ToString() + "','" +
-                                    item.valorTotal.ToString() + "','" +
-                                    item.desconto.ToString() + "');";
+                        "VALUES (" +
+                            id + 
+                            idEmp.ToString() + ",'" +
+                            idPed.ToString() + "','" +
+                            item.produto.idProduto.ToString() + "','" +
+                            item.quantidade.ToString() + "','" +
+                            item.produto.valor.ToString() + "','" +
+                            item.valorTotal.ToString() + "','" +
+                            item.desconto.ToString() + "');";
 
                 OleDbCommand cmd = new OleDbCommand(comandoSql, DBService.conexao);
                 try
@@ -131,6 +140,7 @@ namespace descktop.Services
                 }
                 finally
                 {
+                    
                 }
             }
             return true;
@@ -168,6 +178,36 @@ namespace descktop.Services
             }
             finally
             {
+                DBService.conexao.Close();
+            }
+        }
+
+        public void restoreBackUp(string nomeTabela, JToken tabela)
+        {
+            DBService dBService = new DBService();
+            dBService.truncateTable(nomeTabela, "itp_ItemPedido_int_PK");
+            ParseUtils encodeString = new ParseUtils();
+            foreach (var linha in tabela)
+            {
+                ProdutosCarrinho produtos = new ProdutosCarrinho();
+                produtos.produtos = new List<ProdutosCesta>();
+                ProdutosCesta produtosCesta = new ProdutosCesta();
+                produtosCesta.produto = new ProdutosModel();
+                for (int i = 0; i < linha.Count(); i++)
+                {
+                    var itens = linha[i];
+                    if (itens.Value<int>("itp_ItemPedido_int_PK") != 0) { produtosCesta.idItemPedido = itens.Value<int>("itp_ItemPedido_int_PK"); }
+                    if (itens.Value<int>("itp_Empresa_int_FK") != 0) { produtos.idEmpresa = itens.Value<int>("itp_Empresa_int_FK"); }
+                    if (itens.Value<int>("itp_Pedido_int_FK") != 0) { produtos.idPedido = itens.Value<int>("itp_Pedido_int_FK"); }
+                    if (itens.Value<int>("itp_Produto_int_FK") != 0) { produtosCesta.produto.idProduto = itens.Value<int>("itp_Produto_int_FK"); }
+                    if (itens.Value<decimal>("itp_Quantidade_int") != 0) { produtosCesta.quantidade = itens.Value<decimal>("itp_Quantidade_int"); }
+                    if (itens.Value<decimal>("itp_ValorUnitario_mon") != 0) { produtosCesta.produto.valor = itens.Value<decimal>("itp_ValorUnitario_mon"); }
+                    if (itens.Value<decimal>("itp_ValorTotal_mon") != 0) { produtosCesta.valorTotal = itens.Value<decimal>("itp_ValorTotal_mon"); }
+                    if (itens.Value<decimal>("itp_ValorDesconto_mon") != 0) { produtosCesta.desconto = itens.Value<decimal>("itp_ValorDesconto_mon"); }
+
+                }
+                produtos.produtos.Add(produtosCesta);
+                inItensPedido(produtos.idEmpresa, produtos.idPedido, produtos);
                 DBService.conexao.Close();
             }
         }

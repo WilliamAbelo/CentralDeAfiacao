@@ -1,5 +1,7 @@
 ﻿using descktop.Data;
 using descktop.Services;
+using descktop.Utils;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -26,10 +28,11 @@ namespace descktop.Services
             if (buscarPedAbertos)
             {
                 idPedidos = "in (";
-            }else
+            }
+            else
             {
                 top = " top 10 ";
-                idPedidos = "not in (";                
+                idPedidos = "not in (";
             }
             foreach (var item in idPed)
             {
@@ -46,7 +49,7 @@ namespace descktop.Services
                 "ped_Desconto_mon " +
                 "from TB_CA_Pedidos_ped " +
                 "where ped_Empresa_int_FK = " + idEmp.ToString() +
-                " and ped_Pedido_int_PK " + idPedidos + ") "+
+                " and ped_Pedido_int_PK " + idPedidos + ") " +
                 paginacao +
                 " order by ped_DataVenda_dtm desc";
 
@@ -82,7 +85,7 @@ namespace descktop.Services
                         pedido.cliente = clienteService.seCliente(idEmp, (int)dados["ped_idCliente_int_FK"]);
                         pedido.Produtos = itemPedidoService.seItensPedido(idEmp, (int)dados["ped_Pedido_int_PK"]);
                         pedido.observacao = dados["ped_Observacao_chr"].ToString();
-                        pedido.desconto = (decimal)dados["ped_Desconto_mon"];   
+                        pedido.desconto = (decimal)dados["ped_Desconto_mon"];
 
                         lstPedidos.Add(pedido);
                     }
@@ -400,6 +403,81 @@ namespace descktop.Services
             finally
             {
                 DBService.conexao.Close();
+            }
+        }
+
+        public bool inPedidoRestore(int idEmp, PedidosModel pedido)
+        {
+            string comandoSql = "insert into TB_CA_Pedidos_ped (" + 
+                "ped_Pedido_int_PK," +
+                "ped_Empresa_int_FK," +
+                "ped_idCliente_int_FK," +
+                "ped_ValorTotal_mon," +
+                "ped_DataVenda_dtm," +
+                "ped_Observacao_chr," +
+                "ped_Desconto_mon ) values ( " +
+                pedido.idPedido + ", " +
+                idEmp.ToString() + ", " +
+                pedido.cliente.idCliente.ToString() + ", '" +
+                pedido.valorTotal + "', '" +
+                pedido.dataVenda + "', '" +
+                pedido.observacao + "', '" +
+                pedido.desconto + "' )";
+
+            OleDbCommand cmd = new OleDbCommand(comandoSql, DBService.conexao);
+
+            try
+            {
+                //Abertura da conexÃ£o
+                DBService.conexao.Open();
+
+                int succ = cmd.ExecuteNonQuery();
+
+                if (succ == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception exc)
+            {
+
+                throw new Exception(exc.Message);
+            }
+            finally
+            {
+                DBService.conexao.Close();
+            }
+        }
+        public void restoreBackUp(string nomeTabela, JToken tabela)
+        {
+            DBService dBService = new DBService();
+            dBService.truncateTable(nomeTabela, "ped_Pedido_int_PK");
+            ParseUtils encodeString = new ParseUtils();
+            foreach (var linha in tabela)
+            {
+                PedidosModel pedidosModel = new PedidosModel();
+                pedidosModel.cliente = new ClientesModel();
+
+                for (int i = 0; i < linha.Count(); i++)
+                {
+                    var itens = linha[i];
+                    if (itens.Value<int>("ped_Pedido_int_PK") != 0) { pedidosModel.idPedido = itens.Value<int>("ped_Pedido_int_PK"); }
+                    if (itens.Value<int>("ped_Empresa_int_FK") != 0) { pedidosModel.idEmpresa = itens.Value<int>("ped_Empresa_int_FK"); }
+                    if (itens.Value<int>("ped_idCliente_int_FK") != 0) { pedidosModel.cliente.idCliente = itens.Value<int>("ped_idCliente_int_FK"); }
+                    if (itens.Value<decimal>("ped_ValorTotal_mon") != 0) { pedidosModel.valorTotal = itens.Value<decimal>("ped_ValorTotal_mon"); }
+                    if (itens.Value<string>("ped_Observacao_chr") != null) { pedidosModel.observacao = encodeString.encodeString(itens.Value<string>("ped_Observacao_chr")); }
+                    if (itens.Value<decimal>("ped_Desconto_mon") != 0) { pedidosModel.desconto = itens.Value<decimal>("ped_Desconto_mon"); }
+                    if (itens.Value<string>("ped_DataVenda_dtm") != null)
+                    {
+                        string iDate = itens.Value<string>("ped_DataVenda_dtm");
+                        pedidosModel.dataVenda = Convert.ToDateTime(iDate);
+                    }
+                }
+                inPedidoRestore(pedidosModel.idEmpresa, pedidosModel);
             }
         }
     }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBackUp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.cbTabelas = new System.Windows.Forms.ComboBox();
@@ -40,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnvoltar = new System.Windows.Forms.Button();
             this.btnAplicar = new System.Windows.Forms.Button();
+            this.btRestaurar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +51,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btRestaurar);
+            this.panel1.Controls.Add(this.btnBackUp);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.cbTabelas);
@@ -62,6 +66,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(735, 416);
             this.panel1.TabIndex = 0;
+            // 
+            // btnBackUp
+            // 
+            this.btnBackUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackUp.Location = new System.Drawing.Point(256, 388);
+            this.btnBackUp.Name = "btnBackUp";
+            this.btnBackUp.Size = new System.Drawing.Size(87, 23);
+            this.btnBackUp.TabIndex = 50;
+            this.btnBackUp.Text = "Fazer BackUp";
+            this.btnBackUp.UseVisualStyleBackColor = true;
+            this.btnBackUp.Click += new System.EventHandler(this.btnBackUp_Click);
             // 
             // label1
             // 
@@ -172,6 +188,18 @@
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
             // 
+            // btRestaurar
+            // 
+            this.btRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btRestaurar.Location = new System.Drawing.Point(408, 388);
+            this.btRestaurar.Name = "btRestaurar";
+            this.btRestaurar.Size = new System.Drawing.Size(104, 23);
+            this.btRestaurar.TabIndex = 51;
+            this.btRestaurar.Text = "Restaurar BackUp";
+            this.btRestaurar.UseVisualStyleBackColor = true;
+            this.btRestaurar.Click += new System.EventHandler(this.btRestaurar_Click);
+            // 
             // frmDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,5 +232,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbTabelas;
+        private System.Windows.Forms.Button btnBackUp;
+        private System.Windows.Forms.Button btRestaurar;
     }
 }

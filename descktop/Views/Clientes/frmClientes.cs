@@ -20,7 +20,7 @@ namespace descktop
         string estado;
         public frmClientes(int idEmp, frmInicio frmIn)
         {
-            estado = " = 'SP'";
+            estado = " = 'AC'";
             idEmpresa = idEmp;
             frmInicio = frmIn;
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace descktop
             frmInicio.Resize += new EventHandler(this.frmInicio_Resize);
             MontarColunas();
             BuscarLista(estado);
+            tbAC.Controls.Add(lstCli);
         }
 
         private void frmClientes_Load(object sender, EventArgs e)
@@ -70,6 +71,7 @@ namespace descktop
 
         public void PopularLista(List<ClientesModel> clientes, string nome = "")
         {
+
             foreach (ClientesModel cliente in clientes)
             {
                 if (nome != "" && cliente.nome.ToLower().Contains(nome.ToLower()))
@@ -148,39 +150,115 @@ namespace descktop
             lstCli.Items.Clear();
             switch (ctrListaCli.SelectedIndex)
             {
-                case 0: //SP
-                    estado = " = 'SP'";
-                    tbSP.Controls.Add(lstCli);
+                case 0: //AC
+                    estado = " = 'AC'";
+                    tbAC.Controls.Add(lstCli);
                     break;
-                case 1: //MG
-                    estado = " = 'MG'";
-                    tbMG.Controls.Add(lstCli);
+                case 1: //AL
+                    estado = " = 'AL'";
+                    tbAL.Controls.Add(lstCli);
                     break;
-                case 2: //PR
-                    estado = " = 'PR'";
-                    tbPR.Controls.Add(lstCli);
+                case 2: //AP
+                    estado = " = 'AP'";
+                    tbAP.Controls.Add(lstCli);
                     break;
-                case 3: //GO
+                case 3: //AM
+                    estado = " = 'AM'";
+                    tbAM.Controls.Add(lstCli);
+                    break;
+                case 4: //BA
+                    estado = " = 'BA'";
+                    tbBA.Controls.Add(lstCli);
+                    break;
+                case 5: //CE
+                    estado = " = 'CE'";
+                    tbCE.Controls.Add(lstCli);
+                    break;
+                case 6: //ES
+                    estado = " = 'ES'";
+                    tbES.Controls.Add(lstCli);
+                    break;
+                case 7: //GO
                     estado = " = 'GO'";
                     tbGO.Controls.Add(lstCli);
                     break;
-                case 4: //MS
+                case 8: //MA
+                    estado = " = 'MA'";
+                    tbMA.Controls.Add(lstCli);
+                    break;
+                case 9: //MT
+                    estado = " = 'MT'";
+                    tbMT.Controls.Add(lstCli);
+                    break;
+                case 10: //MS
                     estado = " = 'MS'";
                     tbMS.Controls.Add(lstCli);
                     break;
-                case 5: //PA
+                case 11: //MG
+                    estado = " = 'MG'";
+                    tbMG.Controls.Add(lstCli);
+                    break;
+                case 12: //PA
                     estado = " = 'PA'";
                     tbPA.Controls.Add(lstCli);
                     break;
-                case 6: //TO
-                    estado = " = 'TO'";
-                    tbTO.Controls.Add(lstCli);
+                case 13: //PB
+                    estado = " = 'PB'";
+                    tbPB.Controls.Add(lstCli);
                     break;
-                case 7: //RJ
+                case 14: //PR
+                    estado = " = 'PR'";
+                    tbPR.Controls.Add(lstCli);
+                    break;
+                case 15: //PE
+                    estado = " = 'PE'";
+                    tbPE.Controls.Add(lstCli);
+                    break;
+                case 16: //PI
+                    estado = " = 'PI'";
+                    tbPI.Controls.Add(lstCli);
+                    break;
+                case 17: //RJ
                     estado = " = 'RJ'";
                     tbRJ.Controls.Add(lstCli);
                     break;
-                default: //outros produtos                   
+                case 18: //RN
+                    estado = " = 'RN'";
+                    tbRN.Controls.Add(lstCli);
+                    break;
+                case 19: //RS
+                    estado = " = 'RS'";
+                    tbRS.Controls.Add(lstCli);
+                    break;
+                case 20: //RO
+                    estado = " = 'RO'";
+                    tbRO.Controls.Add(lstCli);
+                    break;
+                case 21: //RR
+                    estado = " = 'RR'";
+                    tbRR.Controls.Add(lstCli);
+                    break;
+                case 22: //SC
+                    estado = " = 'SC'";
+                    tbSC.Controls.Add(lstCli);
+                    break;
+                case 23: //SP
+                    estado = " = 'SP'";
+                    tbSP.Controls.Add(lstCli);
+                    break;
+                case 24: //SE
+                    estado = " = 'SE'";
+                    tbSE.Controls.Add(lstCli);
+                    break;
+                case 25: //TO
+                    estado = " = 'TO'";
+                    tbTO.Controls.Add(lstCli);
+                    break;
+                case 26: //DF
+                    estado = " = 'DF'";
+                    tbDF.Controls.Add(lstCli);
+                    break;
+                default: //outros clientes                   
                     break;
             }
             BuscarLista(estado);

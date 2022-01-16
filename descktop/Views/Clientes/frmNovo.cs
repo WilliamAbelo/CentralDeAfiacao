@@ -95,14 +95,34 @@ namespace descktop.Views.Clientes
         public void montarCbEstado()
         {
             cbEst.Items.Add("");
-            cbEst.Items.Add("MG");
-            cbEst.Items.Add("SP");
-            cbEst.Items.Add("PR");
+            cbEst.Items.Add("AC");
+            cbEst.Items.Add("AL");
+            cbEst.Items.Add("AP");
+            cbEst.Items.Add("AM");
+            cbEst.Items.Add("BA");
+            cbEst.Items.Add("CE");
+            cbEst.Items.Add("ES");
             cbEst.Items.Add("GO");
+
+            cbEst.Items.Add("MA");
+            cbEst.Items.Add("MT");
             cbEst.Items.Add("MS");
+            cbEst.Items.Add("MG");
             cbEst.Items.Add("PA");
-            cbEst.Items.Add("TO");
+            cbEst.Items.Add("PB");
+            cbEst.Items.Add("PR");
+            cbEst.Items.Add("PE");
+            cbEst.Items.Add("PI");
             cbEst.Items.Add("RJ");
+            cbEst.Items.Add("RN");
+            cbEst.Items.Add("RS");
+            cbEst.Items.Add("RO");
+            cbEst.Items.Add("RR");
+            cbEst.Items.Add("SC");
+            cbEst.Items.Add("SP");
+            cbEst.Items.Add("SE");
+            cbEst.Items.Add("TO");
+            cbEst.Items.Add("DF");
 
             cbEst.SelectedIndex = 0;
         }

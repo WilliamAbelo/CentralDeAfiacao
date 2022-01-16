@@ -122,12 +122,14 @@
             // btnFluxCaix
             // 
             this.btnFluxCaix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFluxCaix.Enabled = false;
             this.btnFluxCaix.Location = new System.Drawing.Point(680, 12);
             this.btnFluxCaix.Name = "btnFluxCaix";
             this.btnFluxCaix.Size = new System.Drawing.Size(92, 23);
             this.btnFluxCaix.TabIndex = 19;
             this.btnFluxCaix.Text = "Fluxo de Caixa";
             this.btnFluxCaix.UseVisualStyleBackColor = true;
+            this.btnFluxCaix.Visible = false;
             this.btnFluxCaix.Click += new System.EventHandler(this.btnFluxCaix_Click);
             // 
             // button1

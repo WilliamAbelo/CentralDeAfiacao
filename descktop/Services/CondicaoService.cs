@@ -1,4 +1,6 @@
 ﻿using descktop.Data;
+using descktop.Utils;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -132,14 +134,20 @@ namespace descktop.Services
 
         public bool inCondicaoPedido(int idEmp, int idPed, CondicoesModel condicoes)
         {
-            //TB_CA_Condicao_con
-            //con_Condicao_int_PK con_Empresa_int_FK  con_Pedido_int_FK con_Parcela_chr con_ValorParcela_mon con_FormaPagamento_chr  con_DataParcela_dtm
-
+            string insertId = "";
+            string id = "";
             //Abertura da conexão
             DBService.conexao.Open();
             foreach (CondicaoParcelas item in condicoes.parcelas)
             {
+                if (item.idParcela != 0)
+                {
+                    insertId = "con_Condicao_int_PK,";
+                    id = item.idParcela + ",";
+                }
+
                 string comandoSql = "insert into TB_CA_Condicao_con (" +
+                     insertId +
                         "con_Empresa_int_FK, " +
                         "con_Pedido_int_FK, " +
                         "con_Parcela_chr, " +
@@ -148,20 +156,21 @@ namespace descktop.Services
                         "con_DataParcela_dtm," +
                         "con_Pago_int," +
                         "con_DataPagamento_dtm ) " +
-                        "VALUES (" + idEmp.ToString() + ",'" +
-                                    idPed.ToString() + "','" +
-                                    item.numeroParcela + "','" +
-                                    item.valorParcela.ToString() + "','" +
-                                    item.formaPagamento + "','" +
-                                    item.dataParcela + "'," +
-                                    item.pago + ",'" +
-                                    item.dataPagamento + "');";
+                        "VALUES (" +
+                            id +
+                            idEmp.ToString() + ",'" +
+                            idPed.ToString() + "','" +
+                            item.numeroParcela + "','" +
+                            item.valorParcela.ToString() + "','" +
+                            item.formaPagamento + "','" +
+                            item.dataParcela + "'," +
+                            item.pago + ",'" +
+                            item.dataPagamento + "');";
 
                 OleDbCommand cmd = new OleDbCommand(comandoSql, DBService.conexao);
                 try
                 {
-                    //A conexão ja esta aberta
-
+                    //A conexão ja esta aberta                    
                     //Executar o comando e ler os dados retornados
                     int succ = cmd.ExecuteNonQuery();
                     if (succ == 0)
@@ -177,6 +186,7 @@ namespace descktop.Services
                 }
                 finally
                 {
+                    
                 }
             }
             return true;
@@ -188,7 +198,7 @@ namespace descktop.Services
             string comandoSql = "update TB_CA_Condicao_con set " +
                     "con_Pago_int = '" + parcela.pago + "', " +
                     "con_DataPagamento_dtm = '" + parcela.dataPagamento + "', " +
-                    "con_DataParcela_dtm = '" + parcela.dataParcela + "' "+
+                    "con_DataParcela_dtm = '" + parcela.dataParcela + "' " +
                     "where con_Empresa_int_FK = " + idEmp + " and " +
                     "con_Pedido_int_FK = " + idPed + " and " +
                     "con_Condicao_int_PK = " + parcela.idParcela;
@@ -250,6 +260,43 @@ namespace descktop.Services
             }
             finally
             {
+                DBService.conexao.Close();
+            }
+        }
+
+        public void restoreBackUp(string nomeTabela, JToken tabela)
+        {
+            DBService dBService = new DBService();
+            dBService.truncateTable(nomeTabela, "con_Condicao_int_PK");
+            ParseUtils encodeString = new ParseUtils();
+            foreach (var linha in tabela)
+            {
+                CondicoesModel condicoesModel = new CondicoesModel();
+                condicoesModel.parcelas = new List<CondicaoParcelas>();
+                CondicaoParcelas parcelas = new CondicaoParcelas();
+                for (int i = 0; i < linha.Count(); i++)
+                {
+                    var itens = linha[i];
+                    if (itens.Value<int>("con_Empresa_int_FK") != 0) { condicoesModel.idEmpresa = itens.Value<int>("con_Empresa_int_FK"); }
+                    if (itens.Value<int>("con_Pedido_int_FK") != 0) { condicoesModel.idPedido = itens.Value<int>("con_Pedido_int_FK"); }
+                    if (itens.Value<int>("con_Condicao_int_PK") != 0) { parcelas.idParcela = itens.Value<int>("con_Condicao_int_PK"); }
+                    if (itens.Value<string>("con_Parcela_chr") != null) { parcelas.numeroParcela = encodeString.encodeString(itens.Value<string>("con_Parcela_chr")); }
+                    if (itens.Value<decimal>("con_ValorParcela_mon") != 0) { parcelas.valorParcela = itens.Value<decimal>("con_ValorParcela_mon"); }
+                    if (itens.Value<string>("con_FormaPagamento_chr") != null) { parcelas.formaPagamento = encodeString.encodeString(itens.Value<string>("con_FormaPagamento_chr")); }
+                    if (itens.Value<int>("con_Pago_int") != 0) { parcelas.pago = itens.Value<int>("con_Pago_int"); }
+                    if (itens.Value<string>("con_DataParcela_dtm") != null)
+                    {
+                        string iDate = itens.Value<string>("con_DataParcela_dtm");
+                        parcelas.dataParcela = Convert.ToDateTime(iDate);
+                    }
+                    if (itens.Value<string>("con_DataPagamento_dtm") != null)
+                    {
+                        string iDate = itens.Value<string>("con_DataPagamento_dtm");
+                        parcelas.dataPagamento = Convert.ToDateTime(iDate);
+                    }
+                }
+                condicoesModel.parcelas.Add(parcelas);
+                inCondicaoPedido(condicoesModel.idEmpresa, condicoesModel.idPedido, condicoesModel);
                 DBService.conexao.Close();
             }
         }

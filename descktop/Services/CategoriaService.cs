@@ -1,4 +1,6 @@
 ﻿using descktop.Data;
+using descktop.Utils;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -135,19 +137,30 @@ namespace descktop.Services
             }
         }
 
-            public void inCategoria(int idEmp, CategoriasModel categoria)
+        public void inCategoria(int idEmp, CategoriasModel categoria)
         {
+            string insertId = "";
+            string id = "";
+            if (categoria.idCategoria != 0)
+            {
+                insertId = "ctg_Categoria_int_PK,";
+                id = categoria.idCategoria + ",";
+            }
+
             string comandoSql = "insert into TB_CA_Categorias_ctg (" +
+                insertId +
                 "ctg_Empresa_int_FK," +
                 "ctg_Categoria_chr," +
                 "ctg_Observacao_chr," +
                 "ctg_Unidade_chr," +
                 "ctg_DataCriacao_dtm )" +
-                "VALUES (" + idEmp.ToString() + ",'" +
-                            categoria.categoria + "','" +
-                            categoria.observacao + "','" +
-                            categoria.unidade + "','" +
-                            categoria.dataCriacao.ToString() + "')";
+                "VALUES (" +
+                id +
+                idEmp.ToString() + ",'" +
+                categoria.categoria + "','" +
+                categoria.observacao + "','" +
+                categoria.unidade + "','" +
+                categoria.dataCriacao.ToString() + "')";
 
             OleDbCommand commando = new OleDbCommand(comandoSql, DBService.conexao);
 
@@ -168,6 +181,31 @@ namespace descktop.Services
             finally
             {
                 DBService.conexao.Close();
+            }
+        }
+        public void restoreBackUp(string nomeTabela, JToken tabela)
+        {
+            DBService dBService = new DBService();
+            dBService.truncateTable(nomeTabela, "ctg_Categoria_int_PK");
+            ParseUtils encodeString = new ParseUtils();
+            foreach (var linha in tabela)
+            {
+                CategoriasModel categoriasModel = new CategoriasModel();
+                for (int i = 0; i < linha.Count(); i++)
+                {
+                    var itens = linha[i];
+                    if (itens.Value<int>("ctg_Categoria_int_PK") != 0) { categoriasModel.idCategoria = itens.Value<int>("ctg_Categoria_int_PK"); }
+                    if (itens.Value<int>("ctg_Empresa_int_FK") != 0) { categoriasModel.idEmpresa = itens.Value<int>("ctg_Empresa_int_FK"); }
+                    if (itens.Value<string>("ctg_Categoria_chr") != null) { categoriasModel.categoria = encodeString.encodeString(itens.Value<string>("ctg_Categoria_chr")); }
+                    if (itens.Value<string>("ctg_Observacao_chr") != null) { categoriasModel.observacao = encodeString.encodeString(itens.Value<string>("ctg_Observacao_chr")); }
+                    if (itens.Value<string>("ctg_Unidade_chr") != null) { categoriasModel.unidade = encodeString.encodeString(itens.Value<string>("ctg_Unidade_chr")); }
+                    if (itens.Value<string>("ctg_DataCriacao_dtm") != null)
+                    {
+                        string iDate = itens.Value<string>("ctg_DataCriacao_dtm");
+                        categoriasModel.dataCriacao = Convert.ToDateTime(iDate);
+                    }
+                }
+                inCategoria(categoriasModel.idEmpresa, categoriasModel);
             }
         }
     }

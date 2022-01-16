@@ -45,6 +45,25 @@
             this.tbPA = new System.Windows.Forms.TabPage();
             this.tbTO = new System.Windows.Forms.TabPage();
             this.tbRJ = new System.Windows.Forms.TabPage();
+            this.tbAC = new System.Windows.Forms.TabPage();
+            this.tbAL = new System.Windows.Forms.TabPage();
+            this.tbAP = new System.Windows.Forms.TabPage();
+            this.tbAM = new System.Windows.Forms.TabPage();
+            this.tbBA = new System.Windows.Forms.TabPage();
+            this.tbCE = new System.Windows.Forms.TabPage();
+            this.tbES = new System.Windows.Forms.TabPage();
+            this.tbMA = new System.Windows.Forms.TabPage();
+            this.tbMT = new System.Windows.Forms.TabPage();
+            this.tbPB = new System.Windows.Forms.TabPage();
+            this.tbPE = new System.Windows.Forms.TabPage();
+            this.tbPI = new System.Windows.Forms.TabPage();
+            this.tbRN = new System.Windows.Forms.TabPage();
+            this.tbRS = new System.Windows.Forms.TabPage();
+            this.tbRO = new System.Windows.Forms.TabPage();
+            this.tbRR = new System.Windows.Forms.TabPage();
+            this.tbSC = new System.Windows.Forms.TabPage();
+            this.tbSE = new System.Windows.Forms.TabPage();
+            this.tbDF = new System.Windows.Forms.TabPage();
             this.pnlCli.SuspendLayout();
             this.ctrListaCli.SuspendLayout();
             this.tbSP.SuspendLayout();
@@ -131,14 +150,33 @@
             this.ctrListaCli.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ctrListaCli.Controls.Add(this.tbSP);
-            this.ctrListaCli.Controls.Add(this.tbMG);
-            this.ctrListaCli.Controls.Add(this.tbPR);
+            this.ctrListaCli.Controls.Add(this.tbAC);
+            this.ctrListaCli.Controls.Add(this.tbAL);
+            this.ctrListaCli.Controls.Add(this.tbAP);
+            this.ctrListaCli.Controls.Add(this.tbAM);
+            this.ctrListaCli.Controls.Add(this.tbBA);
+            this.ctrListaCli.Controls.Add(this.tbCE);
+            this.ctrListaCli.Controls.Add(this.tbES);
             this.ctrListaCli.Controls.Add(this.tbGO);
+            this.ctrListaCli.Controls.Add(this.tbMA);
+            this.ctrListaCli.Controls.Add(this.tbMT);
             this.ctrListaCli.Controls.Add(this.tbMS);
+            this.ctrListaCli.Controls.Add(this.tbMG);
             this.ctrListaCli.Controls.Add(this.tbPA);
-            this.ctrListaCli.Controls.Add(this.tbTO);
+            this.ctrListaCli.Controls.Add(this.tbPB);
+            this.ctrListaCli.Controls.Add(this.tbPR);
+            this.ctrListaCli.Controls.Add(this.tbPE);
+            this.ctrListaCli.Controls.Add(this.tbPI);
             this.ctrListaCli.Controls.Add(this.tbRJ);
+            this.ctrListaCli.Controls.Add(this.tbRN);
+            this.ctrListaCli.Controls.Add(this.tbRS);
+            this.ctrListaCli.Controls.Add(this.tbRO);
+            this.ctrListaCli.Controls.Add(this.tbRR);
+            this.ctrListaCli.Controls.Add(this.tbSC);
+            this.ctrListaCli.Controls.Add(this.tbSP);
+            this.ctrListaCli.Controls.Add(this.tbSE);
+            this.ctrListaCli.Controls.Add(this.tbTO);
+            this.ctrListaCli.Controls.Add(this.tbDF);
             this.ctrListaCli.Location = new System.Drawing.Point(4, 31);
             this.ctrListaCli.Name = "ctrListaCli";
             this.ctrListaCli.SelectedIndex = 0;
@@ -233,6 +271,177 @@
             this.tbRJ.Text = "RJ";
             this.tbRJ.UseVisualStyleBackColor = true;
             // 
+            // tbAC
+            // 
+            this.tbAC.Location = new System.Drawing.Point(4, 22);
+            this.tbAC.Name = "tbAC";
+            this.tbAC.Size = new System.Drawing.Size(721, 352);
+            this.tbAC.TabIndex = 8;
+            this.tbAC.Text = "AC";
+            this.tbAC.UseVisualStyleBackColor = true;
+            // 
+            // tbAL
+            // 
+            this.tbAL.Location = new System.Drawing.Point(4, 22);
+            this.tbAL.Name = "tbAL";
+            this.tbAL.Size = new System.Drawing.Size(721, 352);
+            this.tbAL.TabIndex = 9;
+            this.tbAL.Text = "AL";
+            this.tbAL.UseVisualStyleBackColor = true;
+            // 
+            // tbAP
+            // 
+            this.tbAP.Location = new System.Drawing.Point(4, 22);
+            this.tbAP.Name = "tbAP";
+            this.tbAP.Size = new System.Drawing.Size(721, 352);
+            this.tbAP.TabIndex = 10;
+            this.tbAP.Text = "AP";
+            this.tbAP.UseVisualStyleBackColor = true;
+            // 
+            // tbAM
+            // 
+            this.tbAM.Location = new System.Drawing.Point(4, 22);
+            this.tbAM.Name = "tbAM";
+            this.tbAM.Size = new System.Drawing.Size(721, 352);
+            this.tbAM.TabIndex = 11;
+            this.tbAM.Text = "AM";
+            this.tbAM.UseVisualStyleBackColor = true;
+            // 
+            // tbBA
+            // 
+            this.tbBA.Location = new System.Drawing.Point(4, 22);
+            this.tbBA.Name = "tbBA";
+            this.tbBA.Size = new System.Drawing.Size(721, 352);
+            this.tbBA.TabIndex = 12;
+            this.tbBA.Text = "BA";
+            this.tbBA.UseVisualStyleBackColor = true;
+            // 
+            // tbCE
+            // 
+            this.tbCE.Location = new System.Drawing.Point(4, 22);
+            this.tbCE.Name = "tbCE";
+            this.tbCE.Size = new System.Drawing.Size(721, 352);
+            this.tbCE.TabIndex = 13;
+            this.tbCE.Text = "CE";
+            this.tbCE.UseVisualStyleBackColor = true;
+            // 
+            // tbES
+            // 
+            this.tbES.Location = new System.Drawing.Point(4, 22);
+            this.tbES.Name = "tbES";
+            this.tbES.Size = new System.Drawing.Size(721, 352);
+            this.tbES.TabIndex = 14;
+            this.tbES.Text = "ES";
+            this.tbES.UseVisualStyleBackColor = true;
+            // 
+            // tbMA
+            // 
+            this.tbMA.Location = new System.Drawing.Point(4, 22);
+            this.tbMA.Name = "tbMA";
+            this.tbMA.Size = new System.Drawing.Size(721, 352);
+            this.tbMA.TabIndex = 15;
+            this.tbMA.Text = "MA";
+            this.tbMA.UseVisualStyleBackColor = true;
+            // 
+            // tbMT
+            // 
+            this.tbMT.Location = new System.Drawing.Point(4, 22);
+            this.tbMT.Name = "tbMT";
+            this.tbMT.Size = new System.Drawing.Size(721, 352);
+            this.tbMT.TabIndex = 16;
+            this.tbMT.Text = "MT";
+            this.tbMT.UseVisualStyleBackColor = true;
+            // 
+            // tbPB
+            // 
+            this.tbPB.Location = new System.Drawing.Point(4, 22);
+            this.tbPB.Name = "tbPB";
+            this.tbPB.Size = new System.Drawing.Size(721, 352);
+            this.tbPB.TabIndex = 17;
+            this.tbPB.Text = "PB";
+            this.tbPB.UseVisualStyleBackColor = true;
+            // 
+            // tbPE
+            // 
+            this.tbPE.Location = new System.Drawing.Point(4, 22);
+            this.tbPE.Name = "tbPE";
+            this.tbPE.Size = new System.Drawing.Size(721, 352);
+            this.tbPE.TabIndex = 18;
+            this.tbPE.Text = "PE";
+            this.tbPE.UseVisualStyleBackColor = true;
+            // 
+            // tbPI
+            // 
+            this.tbPI.Location = new System.Drawing.Point(4, 22);
+            this.tbPI.Name = "tbPI";
+            this.tbPI.Size = new System.Drawing.Size(721, 352);
+            this.tbPI.TabIndex = 19;
+            this.tbPI.Text = "PI";
+            this.tbPI.UseVisualStyleBackColor = true;
+            // 
+            // tbRN
+            // 
+            this.tbRN.Location = new System.Drawing.Point(4, 22);
+            this.tbRN.Name = "tbRN";
+            this.tbRN.Size = new System.Drawing.Size(721, 352);
+            this.tbRN.TabIndex = 20;
+            this.tbRN.Text = "RN";
+            this.tbRN.UseVisualStyleBackColor = true;
+            // 
+            // tbRS
+            // 
+            this.tbRS.Location = new System.Drawing.Point(4, 22);
+            this.tbRS.Name = "tbRS";
+            this.tbRS.Size = new System.Drawing.Size(721, 352);
+            this.tbRS.TabIndex = 21;
+            this.tbRS.Text = "RS";
+            this.tbRS.UseVisualStyleBackColor = true;
+            // 
+            // tbRO
+            // 
+            this.tbRO.Location = new System.Drawing.Point(4, 22);
+            this.tbRO.Name = "tbRO";
+            this.tbRO.Size = new System.Drawing.Size(721, 352);
+            this.tbRO.TabIndex = 22;
+            this.tbRO.Text = "RO";
+            this.tbRO.UseVisualStyleBackColor = true;
+            // 
+            // tbRR
+            // 
+            this.tbRR.Location = new System.Drawing.Point(4, 22);
+            this.tbRR.Name = "tbRR";
+            this.tbRR.Size = new System.Drawing.Size(721, 352);
+            this.tbRR.TabIndex = 23;
+            this.tbRR.Text = "RR";
+            this.tbRR.UseVisualStyleBackColor = true;
+            // 
+            // tbSC
+            // 
+            this.tbSC.Location = new System.Drawing.Point(4, 22);
+            this.tbSC.Name = "tbSC";
+            this.tbSC.Size = new System.Drawing.Size(721, 352);
+            this.tbSC.TabIndex = 24;
+            this.tbSC.Text = "SC";
+            this.tbSC.UseVisualStyleBackColor = true;
+            // 
+            // tbSE
+            // 
+            this.tbSE.Location = new System.Drawing.Point(4, 22);
+            this.tbSE.Name = "tbSE";
+            this.tbSE.Size = new System.Drawing.Size(721, 352);
+            this.tbSE.TabIndex = 25;
+            this.tbSE.Text = "SE";
+            this.tbSE.UseVisualStyleBackColor = true;
+            // 
+            // tbDF
+            // 
+            this.tbDF.Location = new System.Drawing.Point(4, 22);
+            this.tbDF.Name = "tbDF";
+            this.tbDF.Size = new System.Drawing.Size(721, 352);
+            this.tbDF.TabIndex = 26;
+            this.tbDF.Text = "DF";
+            this.tbDF.UseVisualStyleBackColor = true;
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,12 +455,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmClientes";
             this.Text = "frmClientes";
+            this.Load += new System.EventHandler(this.frmClientes_Load);
             this.pnlCli.ResumeLayout(false);
             this.pnlCli.PerformLayout();
             this.ctrListaCli.ResumeLayout(false);
             this.tbSP.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.Load += new System.EventHandler(this.frmClientes_Load);
 
         }
 
@@ -273,5 +482,24 @@
         private System.Windows.Forms.TabPage tbPA;
         private System.Windows.Forms.TabPage tbTO;
         private System.Windows.Forms.TabPage tbRJ;
+        private System.Windows.Forms.TabPage tbAC;
+        private System.Windows.Forms.TabPage tbAL;
+        private System.Windows.Forms.TabPage tbAP;
+        private System.Windows.Forms.TabPage tbAM;
+        private System.Windows.Forms.TabPage tbBA;
+        private System.Windows.Forms.TabPage tbCE;
+        private System.Windows.Forms.TabPage tbES;
+        private System.Windows.Forms.TabPage tbMA;
+        private System.Windows.Forms.TabPage tbMT;
+        private System.Windows.Forms.TabPage tbPB;
+        private System.Windows.Forms.TabPage tbPE;
+        private System.Windows.Forms.TabPage tbPI;
+        private System.Windows.Forms.TabPage tbRN;
+        private System.Windows.Forms.TabPage tbRS;
+        private System.Windows.Forms.TabPage tbRO;
+        private System.Windows.Forms.TabPage tbRR;
+        private System.Windows.Forms.TabPage tbSC;
+        private System.Windows.Forms.TabPage tbSE;
+        private System.Windows.Forms.TabPage tbDF;
     }
 }

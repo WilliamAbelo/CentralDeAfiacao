@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnLimparItens = new System.Windows.Forms.Button();
             this.lblValDesI = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lstItensPedidos = new System.Windows.Forms.ListView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnLimparFrete = new System.Windows.Forms.Button();
             this.lblFrecliente = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -72,6 +74,7 @@
             this.label53 = new System.Windows.Forms.Label();
             this.lblTotFre = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnLimparCondicao = new System.Windows.Forms.Button();
             this.txtValorEnt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblValDesC = new System.Windows.Forms.Label();
@@ -146,9 +149,25 @@
             this.txtNovoProdutoEsco = new System.Windows.Forms.TextBox();
             this.btnNovVoltar = new System.Windows.Forms.Button();
             this.btnFecharPed = new System.Windows.Forms.Button();
-            this.btnLimparCondicao = new System.Windows.Forms.Button();
-            this.btnLimparItens = new System.Windows.Forms.Button();
-            this.btnLimparFrete = new System.Windows.Forms.Button();
+            this.tbAC = new System.Windows.Forms.TabPage();
+            this.tbAL = new System.Windows.Forms.TabPage();
+            this.tbAM = new System.Windows.Forms.TabPage();
+            this.tbBA = new System.Windows.Forms.TabPage();
+            this.tbAP = new System.Windows.Forms.TabPage();
+            this.tbCE = new System.Windows.Forms.TabPage();
+            this.tbES = new System.Windows.Forms.TabPage();
+            this.tbMA = new System.Windows.Forms.TabPage();
+            this.tbMT = new System.Windows.Forms.TabPage();
+            this.tbPB = new System.Windows.Forms.TabPage();
+            this.tbPE = new System.Windows.Forms.TabPage();
+            this.tbPI = new System.Windows.Forms.TabPage();
+            this.tbRN = new System.Windows.Forms.TabPage();
+            this.tbRS = new System.Windows.Forms.TabPage();
+            this.tbRO = new System.Windows.Forms.TabPage();
+            this.tbRR = new System.Windows.Forms.TabPage();
+            this.tbStC = new System.Windows.Forms.TabPage();
+            this.tbSE = new System.Windows.Forms.TabPage();
+            this.tbDF = new System.Windows.Forms.TabPage();
             this.pnlNovo.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -251,6 +270,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Itens do Pedido";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnLimparItens
+            // 
+            this.btnLimparItens.Location = new System.Drawing.Point(641, 0);
+            this.btnLimparItens.Name = "btnLimparItens";
+            this.btnLimparItens.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparItens.TabIndex = 21;
+            this.btnLimparItens.Text = "Limpar Itens";
+            this.btnLimparItens.UseVisualStyleBackColor = true;
+            this.btnLimparItens.Click += new System.EventHandler(this.btnLimparItens_Click);
             // 
             // lblValDesI
             // 
@@ -388,6 +417,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Frete";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnLimparFrete
+            // 
+            this.btnLimparFrete.Location = new System.Drawing.Point(641, 0);
+            this.btnLimparFrete.Name = "btnLimparFrete";
+            this.btnLimparFrete.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparFrete.TabIndex = 63;
+            this.btnLimparFrete.Text = "Limpar Frete";
+            this.btnLimparFrete.UseVisualStyleBackColor = true;
+            this.btnLimparFrete.Click += new System.EventHandler(this.btnLimparFrete_Click);
             // 
             // lblFrecliente
             // 
@@ -693,6 +732,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Condição de Pagamento";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnLimparCondicao
+            // 
+            this.btnLimparCondicao.Location = new System.Drawing.Point(617, 0);
+            this.btnLimparCondicao.Name = "btnLimparCondicao";
+            this.btnLimparCondicao.Size = new System.Drawing.Size(99, 23);
+            this.btnLimparCondicao.TabIndex = 41;
+            this.btnLimparCondicao.Text = "Limpar Condição";
+            this.btnLimparCondicao.UseVisualStyleBackColor = true;
+            this.btnLimparCondicao.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // txtValorEnt
             // 
@@ -1106,14 +1155,33 @@
             this.ctrListaCli.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ctrListaCli.Controls.Add(this.tbSP);
-            this.ctrListaCli.Controls.Add(this.tbMG);
-            this.ctrListaCli.Controls.Add(this.tbPR);
+            this.ctrListaCli.Controls.Add(this.tbAC);
+            this.ctrListaCli.Controls.Add(this.tbAL);
+            this.ctrListaCli.Controls.Add(this.tbAP);
+            this.ctrListaCli.Controls.Add(this.tbAM);
+            this.ctrListaCli.Controls.Add(this.tbBA);
+            this.ctrListaCli.Controls.Add(this.tbCE);
+            this.ctrListaCli.Controls.Add(this.tbES);
             this.ctrListaCli.Controls.Add(this.tbGO);
+            this.ctrListaCli.Controls.Add(this.tbMA);
+            this.ctrListaCli.Controls.Add(this.tbMT);
             this.ctrListaCli.Controls.Add(this.tbMS);
+            this.ctrListaCli.Controls.Add(this.tbMG);
             this.ctrListaCli.Controls.Add(this.tbPA);
-            this.ctrListaCli.Controls.Add(this.tbTO);
+            this.ctrListaCli.Controls.Add(this.tbPB);
+            this.ctrListaCli.Controls.Add(this.tbPR);
+            this.ctrListaCli.Controls.Add(this.tbPE);
+            this.ctrListaCli.Controls.Add(this.tbPI);
             this.ctrListaCli.Controls.Add(this.tbRJ);
+            this.ctrListaCli.Controls.Add(this.tbRN);
+            this.ctrListaCli.Controls.Add(this.tbRS);
+            this.ctrListaCli.Controls.Add(this.tbRO);
+            this.ctrListaCli.Controls.Add(this.tbRR);
+            this.ctrListaCli.Controls.Add(this.tbStC);
+            this.ctrListaCli.Controls.Add(this.tbSP);
+            this.ctrListaCli.Controls.Add(this.tbSE);
+            this.ctrListaCli.Controls.Add(this.tbTO);
+            this.ctrListaCli.Controls.Add(this.tbDF);
             this.ctrListaCli.Location = new System.Drawing.Point(6, 6);
             this.ctrListaCli.Name = "ctrListaCli";
             this.ctrListaCli.SelectedIndex = 0;
@@ -1484,35 +1552,176 @@
             this.btnFecharPed.UseVisualStyleBackColor = true;
             this.btnFecharPed.Click += new System.EventHandler(this.btnFecharPed_Click);
             // 
-            // btnLimparCondicao
+            // tbAC
             // 
-            this.btnLimparCondicao.Location = new System.Drawing.Point(617, 0);
-            this.btnLimparCondicao.Name = "btnLimparCondicao";
-            this.btnLimparCondicao.Size = new System.Drawing.Size(99, 23);
-            this.btnLimparCondicao.TabIndex = 41;
-            this.btnLimparCondicao.Text = "Limpar Condição";
-            this.btnLimparCondicao.UseVisualStyleBackColor = true;
-            this.btnLimparCondicao.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.tbAC.Location = new System.Drawing.Point(4, 22);
+            this.tbAC.Name = "tbAC";
+            this.tbAC.Size = new System.Drawing.Size(699, 95);
+            this.tbAC.TabIndex = 8;
+            this.tbAC.Text = "AC";
+            this.tbAC.UseVisualStyleBackColor = true;
             // 
-            // btnLimparItens
+            // tbAL
             // 
-            this.btnLimparItens.Location = new System.Drawing.Point(641, 0);
-            this.btnLimparItens.Name = "btnLimparItens";
-            this.btnLimparItens.Size = new System.Drawing.Size(75, 23);
-            this.btnLimparItens.TabIndex = 21;
-            this.btnLimparItens.Text = "Limpar Itens";
-            this.btnLimparItens.UseVisualStyleBackColor = true;
-            this.btnLimparItens.Click += new System.EventHandler(this.btnLimparItens_Click);
+            this.tbAL.Location = new System.Drawing.Point(4, 22);
+            this.tbAL.Name = "tbAL";
+            this.tbAL.Size = new System.Drawing.Size(699, 95);
+            this.tbAL.TabIndex = 9;
+            this.tbAL.Text = "AL";
+            this.tbAL.UseVisualStyleBackColor = true;
             // 
-            // btnLimparFrete
+            // tbAM
             // 
-            this.btnLimparFrete.Location = new System.Drawing.Point(641, 0);
-            this.btnLimparFrete.Name = "btnLimparFrete";
-            this.btnLimparFrete.Size = new System.Drawing.Size(75, 23);
-            this.btnLimparFrete.TabIndex = 63;
-            this.btnLimparFrete.Text = "Limpar Frete";
-            this.btnLimparFrete.UseVisualStyleBackColor = true;
-            this.btnLimparFrete.Click += new System.EventHandler(this.btnLimparFrete_Click);
+            this.tbAM.Location = new System.Drawing.Point(4, 22);
+            this.tbAM.Name = "tbAM";
+            this.tbAM.Size = new System.Drawing.Size(699, 95);
+            this.tbAM.TabIndex = 10;
+            this.tbAM.Text = "AM";
+            this.tbAM.UseVisualStyleBackColor = true;
+            // 
+            // tbBA
+            // 
+            this.tbBA.Location = new System.Drawing.Point(4, 22);
+            this.tbBA.Name = "tbBA";
+            this.tbBA.Size = new System.Drawing.Size(699, 95);
+            this.tbBA.TabIndex = 11;
+            this.tbBA.Text = "BA";
+            this.tbBA.UseVisualStyleBackColor = true;
+            // 
+            // tbAP
+            // 
+            this.tbAP.Location = new System.Drawing.Point(4, 22);
+            this.tbAP.Name = "tbAP";
+            this.tbAP.Size = new System.Drawing.Size(699, 95);
+            this.tbAP.TabIndex = 12;
+            this.tbAP.Text = "AP";
+            this.tbAP.UseVisualStyleBackColor = true;
+            // 
+            // tbCE
+            // 
+            this.tbCE.Location = new System.Drawing.Point(4, 22);
+            this.tbCE.Name = "tbCE";
+            this.tbCE.Size = new System.Drawing.Size(699, 95);
+            this.tbCE.TabIndex = 13;
+            this.tbCE.Text = "CE";
+            this.tbCE.UseVisualStyleBackColor = true;
+            // 
+            // tbES
+            // 
+            this.tbES.Location = new System.Drawing.Point(4, 22);
+            this.tbES.Name = "tbES";
+            this.tbES.Size = new System.Drawing.Size(699, 95);
+            this.tbES.TabIndex = 14;
+            this.tbES.Text = "ES";
+            this.tbES.UseVisualStyleBackColor = true;
+            // 
+            // tbMA
+            // 
+            this.tbMA.Location = new System.Drawing.Point(4, 22);
+            this.tbMA.Name = "tbMA";
+            this.tbMA.Size = new System.Drawing.Size(699, 95);
+            this.tbMA.TabIndex = 15;
+            this.tbMA.Text = "MA";
+            this.tbMA.UseVisualStyleBackColor = true;
+            // 
+            // tbMT
+            // 
+            this.tbMT.Location = new System.Drawing.Point(4, 22);
+            this.tbMT.Name = "tbMT";
+            this.tbMT.Size = new System.Drawing.Size(699, 95);
+            this.tbMT.TabIndex = 16;
+            this.tbMT.Text = "MT";
+            this.tbMT.UseVisualStyleBackColor = true;
+            // 
+            // tbPB
+            // 
+            this.tbPB.Location = new System.Drawing.Point(4, 22);
+            this.tbPB.Name = "tbPB";
+            this.tbPB.Size = new System.Drawing.Size(699, 95);
+            this.tbPB.TabIndex = 17;
+            this.tbPB.Text = "PB";
+            this.tbPB.UseVisualStyleBackColor = true;
+            // 
+            // tbPE
+            // 
+            this.tbPE.Location = new System.Drawing.Point(4, 22);
+            this.tbPE.Name = "tbPE";
+            this.tbPE.Size = new System.Drawing.Size(699, 95);
+            this.tbPE.TabIndex = 18;
+            this.tbPE.Text = "PE";
+            this.tbPE.UseVisualStyleBackColor = true;
+            // 
+            // tbPI
+            // 
+            this.tbPI.Location = new System.Drawing.Point(4, 22);
+            this.tbPI.Name = "tbPI";
+            this.tbPI.Size = new System.Drawing.Size(699, 95);
+            this.tbPI.TabIndex = 19;
+            this.tbPI.Text = "PI";
+            this.tbPI.UseVisualStyleBackColor = true;
+            // 
+            // tbRN
+            // 
+            this.tbRN.Location = new System.Drawing.Point(4, 22);
+            this.tbRN.Name = "tbRN";
+            this.tbRN.Size = new System.Drawing.Size(699, 95);
+            this.tbRN.TabIndex = 20;
+            this.tbRN.Text = "RN";
+            this.tbRN.UseVisualStyleBackColor = true;
+            // 
+            // tbRS
+            // 
+            this.tbRS.Location = new System.Drawing.Point(4, 22);
+            this.tbRS.Name = "tbRS";
+            this.tbRS.Size = new System.Drawing.Size(699, 95);
+            this.tbRS.TabIndex = 21;
+            this.tbRS.Text = "RS";
+            this.tbRS.UseVisualStyleBackColor = true;
+            // 
+            // tbRO
+            // 
+            this.tbRO.Location = new System.Drawing.Point(4, 22);
+            this.tbRO.Name = "tbRO";
+            this.tbRO.Size = new System.Drawing.Size(699, 95);
+            this.tbRO.TabIndex = 22;
+            this.tbRO.Text = "RO";
+            this.tbRO.UseVisualStyleBackColor = true;
+            // 
+            // tbRR
+            // 
+            this.tbRR.Location = new System.Drawing.Point(4, 22);
+            this.tbRR.Name = "tbRR";
+            this.tbRR.Size = new System.Drawing.Size(699, 95);
+            this.tbRR.TabIndex = 23;
+            this.tbRR.Text = "RR";
+            this.tbRR.UseVisualStyleBackColor = true;
+            // 
+            // tbStC
+            // 
+            this.tbStC.Location = new System.Drawing.Point(4, 22);
+            this.tbStC.Name = "tbStC";
+            this.tbStC.Size = new System.Drawing.Size(699, 95);
+            this.tbStC.TabIndex = 24;
+            this.tbStC.Text = "SC";
+            this.tbStC.UseVisualStyleBackColor = true;
+            // 
+            // tbSE
+            // 
+            this.tbSE.Location = new System.Drawing.Point(4, 22);
+            this.tbSE.Name = "tbSE";
+            this.tbSE.Size = new System.Drawing.Size(699, 95);
+            this.tbSE.TabIndex = 25;
+            this.tbSE.Text = "SE";
+            this.tbSE.UseVisualStyleBackColor = true;
+            // 
+            // tbDF
+            // 
+            this.tbDF.Location = new System.Drawing.Point(4, 22);
+            this.tbDF.Name = "tbDF";
+            this.tbDF.Size = new System.Drawing.Size(699, 95);
+            this.tbDF.TabIndex = 26;
+            this.tbDF.Text = "DF";
+            this.tbDF.UseVisualStyleBackColor = true;
             // 
             // frmNovo
             // 
@@ -1681,5 +1890,24 @@
         private System.Windows.Forms.Button btnLimparCondicao;
         private System.Windows.Forms.Button btnLimparItens;
         private System.Windows.Forms.Button btnLimparFrete;
+        private System.Windows.Forms.TabPage tbAC;
+        private System.Windows.Forms.TabPage tbAL;
+        private System.Windows.Forms.TabPage tbAP;
+        private System.Windows.Forms.TabPage tbAM;
+        private System.Windows.Forms.TabPage tbBA;
+        private System.Windows.Forms.TabPage tbCE;
+        private System.Windows.Forms.TabPage tbES;
+        private System.Windows.Forms.TabPage tbMA;
+        private System.Windows.Forms.TabPage tbMT;
+        private System.Windows.Forms.TabPage tbPB;
+        private System.Windows.Forms.TabPage tbPE;
+        private System.Windows.Forms.TabPage tbPI;
+        private System.Windows.Forms.TabPage tbRN;
+        private System.Windows.Forms.TabPage tbRS;
+        private System.Windows.Forms.TabPage tbRO;
+        private System.Windows.Forms.TabPage tbRR;
+        private System.Windows.Forms.TabPage tbStC;
+        private System.Windows.Forms.TabPage tbSE;
+        private System.Windows.Forms.TabPage tbDF;
     }
 }
