@@ -16,23 +16,23 @@ Projeto criado para gerenciar uma loja de vendas de ferramentas de marcenaria, o
 ```
 2. Rodando a aplicação pelo prompt
     - ***certifique-se de estar na pasta do projeto***
-    - Restaures os pacotes Nuget
+    - Restaures os pacotes Nuget [^1]
         ```bash
         dotnet restore
         ```
-    - Build o projeto
+    - Build o projeto [^2]
         ```bash
         dotnet build
         ```
-    - Rode o projeto
+    - Rode o projeto [^3]
         ```bash
         dotnet run --project desktop
         ```
-    [Dotnet Restore](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-restore)
+   [^1]: [Dotnet Restore](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-restore)
 
-    [Dotnet Build](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build)
+   [^2]: [Dotnet Build](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build)
     
-    [Dotnet run](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run)
+   [^3]: [Dotnet Run](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run)
 
 
 
